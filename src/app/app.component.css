@@ -1,0 +1,14 @@
+
+.encabezado{
+    background-color: #eceaea;
+    color:blue;
+    text-shadow: 2px 3px rgb(196, 195, 195) ;
+   
+}
+
+.brand-logo {
+  width: 300px; /* Adjust the width as needed */
+  height: auto; 
+  justify-content: left;
+}
+
