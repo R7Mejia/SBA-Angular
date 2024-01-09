@@ -13,12 +13,12 @@ import { HousingLocation } from '../housinglocation';
   template: `
     <article>
       <img
-        class= "listing-photo"
-        [src]= "housingLocation?.foto"
+        class="listing-photo"
+        [src]="housingLocation?.foto"
         alt="Exterior photo of {{ housingLocation?.name }}"
       />
       <section class="listing-description">
-        <h2 class="listing-heading"> {{ housingLocation?.name }}</h2>
+        <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
         <p class="listing-location">
           {{ housingLocation?.city }}, {{ housingLocation?.state }}
         </p>
@@ -29,17 +29,17 @@ import { HousingLocation } from '../housinglocation';
       <section class="listing-features">
         <h2 class="section-heading">About this location</h2>
         <p>
-          Explore More:
-          <a [href]= "housingLocation?.funfacts">{{
+          <span class="explore">Explore More: </span>
+          <a [href]="housingLocation?.funfacts">{{
             housingLocation?.funfacts
           }}</a>
         </p>
         <span
-          >Does this location have an airport? 🛬:
-          {{ housingLocation?.airport }}</span
-        >
+          >Does this location have an airport? :
+          <span *ngIf="housingLocation?.airport; else noAirport">✅</span>
+          <ng-template #noAirport> 🚫 👉🏻 🚗</ng-template>
+        </span>
       </section>
-      
     </article>
   `,
   styleUrls: ['./details.component.css'],
@@ -48,14 +48,10 @@ export class DetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   housingService = inject(HousingService);
   housingLocation: HousingLocation | undefined;
-  
+
   constructor() {
     const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
-    this.housingService
-      .getHousingLocationById(housingLocationId)
-      .then((housingLocation) => {
-        this.housingLocation = housingLocation;
-      });
+    this.housingLocation =
+      this.housingService.getHousingLocationById(housingLocationId);
   }
-
 }
