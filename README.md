@@ -21,4 +21,4 @@ https://github.com/R7Mejia/SBA-Angular
 ## Screen-shot of the final result
 
 ---
-![screenshot](./assets/screenshot.jpeg)
+![screenshot](/my-app/src/assets/images/screenshot.png)
