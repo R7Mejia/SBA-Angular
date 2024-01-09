@@ -20,4 +20,5 @@ https://github.com/R7Mejia/SBA-Angular
 
 ## Screen-shot of the final result
 
-! [screenshot](../assets/screenshot.jpeg) 
+---
+![screenshot](./assets/screenshot.jpeg)
